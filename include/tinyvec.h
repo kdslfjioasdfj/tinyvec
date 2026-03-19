@@ -16,13 +16,17 @@ extern "C" {
 #endif // _MSC_VER || __cplusplus
 
 #ifdef _WIN32
+#ifdef TINYVEC_CONFIG_SHARED
 #ifdef TINYVEC_CONFIG_BUILDING
 #define TINYVEC_PUBLIC_API __declspec(dllexport)
 #else
 #define TINYVEC_PUBLIC_API __declspec(dllimport)
 #endif // TINYVEC_CONFIG_BUILDING
 #else
-#define TINYVEC_PUBLIC_API // Not needed outside of Windows
+#define TINYVEC_PUBLIC_API // Not needed on Windows static builds (.lib)
+#endif                     // TINYVEC_CONFIG_SHARED
+#else
+#define TINYVEC_PUBLIC_API // Not needed outside Windows
 #endif                     // _WIN32
 
 #define TINYVEC_SUCCESS ((int)0)
@@ -49,9 +53,9 @@ TINYVEC_PUBLIC_API int tinyvec_set(tinyvec_t *TINYVEC_INTERNAL_RESTRICT vec,
                                    const void *TINYVEC_INTERNAL_RESTRICT val,
                                    size_t idx);
 
-TINYVEC_PUBLIC_API int tinyvec_get(const tinyvec_t *TINYVEC_INTERNAL_RESTRICT vec,
-                                   void *TINYVEC_INTERNAL_RESTRICT buf,
-                                   size_t idx);
+TINYVEC_PUBLIC_API int
+tinyvec_get(const tinyvec_t *TINYVEC_INTERNAL_RESTRICT vec,
+            void *TINYVEC_INTERNAL_RESTRICT buf, size_t idx);
 
 TINYVEC_PUBLIC_API int tinyvec_push(tinyvec_t *TINYVEC_INTERNAL_RESTRICT vec,
                                     const void *TINYVEC_INTERNAL_RESTRICT val);
