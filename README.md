@@ -20,8 +20,8 @@ cd tinyvec
 2. Build **TinyVec** for your platform.
 
 ```bash
-cmake -B build
-cmake --build build
+premake5 ninja
+ninja
 ```
 
 3. See the documentation for **TinyVec**.
