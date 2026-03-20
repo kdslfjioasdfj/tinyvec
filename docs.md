@@ -1,6 +1,7 @@
 # TinyVec Documentation
 
 > **IMPORTANT NOTE**: Anything that is not documented in this file that was declared/defined in the header is not for public usage. Do not depend on it.
+> **IMPORTANT NOTE**: This library only works for types where `alignof(T) < alignof(max_align_t)`, it may cause a hardware fault otherwise.
 
 ## Macros
 
