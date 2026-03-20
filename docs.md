@@ -191,3 +191,9 @@ Important notes:
 
 - Capacity is the maximum number of elements the vector can hold without reallocating.
 - Returns `TINYVEC_SUCCESS` on success, `TINYVEC_EINVAL` if parameters are invalid.
+
+## Compatibility Notes
+
+### Shared/Dynamic Library vs Static Library Usage
+
+If you are building a _shared/dynamic_ library (using `premake5 <system> --shared`), `TINYVEC_CONFIG_SHARED` must be defined. Otherwise, there may be _linker errors_.
